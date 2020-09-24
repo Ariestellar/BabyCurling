@@ -56,6 +56,6 @@ public class Projectile : MonoBehaviour
 
     public void AnimationStateGo(bool state)     
     {
-        _animationCat.SetBool("go", state);
+        _animationCat.SetTrigger("Pulling");
     }
 }
