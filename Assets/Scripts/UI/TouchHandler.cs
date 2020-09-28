@@ -72,6 +72,7 @@ public class TouchHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             _indicatorPullingForceText.text = "" + _pullingForce;
 
             //дистанция 50 = 1 сила => 100 = 2 силы итд..
+            //когда произошло именно малейшее натяжение 
             if (_distance > 50)
             {
                 _currentProjectile.AnimationStateGo(true);                

@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private Indicators _indicators;
     [SerializeField] private int _pullingForce;
-    [SerializeField] private Animator _animationCat;    
+    [SerializeField] private Animator _animationProjectile;    
     
     private Vector3 _startPositionMouse;
     private CameraMovement _cameraMovement;
@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
     {             
         _camera = gameSessionCurrentLevel.GetMainCamera();
         _cameraMovement = gameSessionCurrentLevel.GetCameraMovement();
-        _audioManager = gameSessionCurrentLevel.GetAudioManager();
+        _audioManager = gameSessionCurrentLevel.GetAudioManager();        
     }
 
     public void PreparationForLaunch()
@@ -56,6 +56,11 @@ public class Projectile : MonoBehaviour
 
     public void AnimationStateGo(bool state)     
     {
-        _animationCat.SetTrigger("Pulling");
+        _animationProjectile.SetTrigger("Pulling");
+    }
+
+    public void AnimationStateStopped()
+    {
+        _animationProjectile.SetTrigger("FinischPose");
     }
 }

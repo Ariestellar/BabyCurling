@@ -13,14 +13,14 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private int _speedRotateGo;
     [SerializeField] private int _speedRotateReturn;
 
-    private float _smooth = 2.0f;
+    private float _smooth = 1.0f;
     private Vector3 _offset = new Vector3(0, 15, -10);
 
     private void FixedUpdate()
     {
         if (_isMovementForProjectile && _target != null)
         {
-            transform.position = Vector3.Lerp(transform.position, _target.position + _offset, Time.deltaTime * _smooth);
+            transform.position =  _target.position + _offset;
 
             transform.RotateAround(transform.position, Vector3.left, _speedRotateGo);
             if (transform.rotation.eulerAngles.x <= 40) 
