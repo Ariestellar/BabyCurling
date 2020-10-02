@@ -7,8 +7,8 @@ using UnityEngine.Video;
 public class UIPanel : MonoBehaviour
 {
     [SerializeField] private GameSessionCurrentLevel _gameSessionCurrentLevel;
-    [SerializeField] private GameObject _lifePanel;    
-    [SerializeField] private Sprite[] _lifeSprite;    
+    [SerializeField] private GameObject _upPanel;
+    [SerializeField] private ScorePanel _scorePanel;
     [SerializeField] private ResultPanel _resultPanel;     
     [SerializeField] private TouchHandler _touchHandler;
     [SerializeField] private GameObject _brifing;
@@ -16,14 +16,14 @@ public class UIPanel : MonoBehaviour
     [SerializeField] private GameObject _tutor;
     [SerializeField] private Text _levelText;    
 
-    private Image[] _lifeImages; 
+    //private Image[] _lifeImages; 
 
     private void Awake()
     {
-        _lifeImages = _lifePanel.GetComponentsInChildren<Image>();             
+        //_lifeImages = _scorePanel.GetComponentsInChildren<Image>();             
     }
 
-    public void SetColorLifePanel(int countLife, Color color)
+    /*public void SetColorLifePanel(int countLife, Color color)
     {
         if (color == Color.green)
         {
@@ -32,14 +32,19 @@ public class UIPanel : MonoBehaviour
         {
             _lifeImages[countLife + 1].sprite = _lifeSprite[1];
         }               
-    }
+    }*/
 
-    public void ResetLifePanel()
+    /*public void ResetLifePanel()
     {    
         for (int i = 1; i < 5; i++)
         {
             _lifeImages[i].sprite = _lifeSprite[0];
         }
+    }*/
+
+    public void SetCountScore(int totalScore)
+    {
+        _scorePanel.SetTextPlayerScore(totalScore);
     }
 
     public void ShowResultPanel(StateGame stateGame)
@@ -55,7 +60,7 @@ public class UIPanel : MonoBehaviour
 
     public void ShowLifePanel()
     {
-        _lifePanel.SetActive(true);
+        _upPanel.SetActive(true);
     }
 
     public void HideResultPanel()

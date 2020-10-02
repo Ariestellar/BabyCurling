@@ -10,6 +10,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private UIPanel _uiPanel;
+    [SerializeField] private Transform _targetPosition;
 
     private TouchHandler _touchHandler;       
     private StateGame _stateGame;    
@@ -23,6 +24,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     public StateGame StateLevel => _stateGame;
     public int NumberProjectilePulling => _numberProjectilePulling;
     public TouchHandler TouchHandler => _touchHandler;
+    public Transform TargetPosition => _targetPosition;
 
     private void Awake()
     {        
@@ -140,11 +142,17 @@ public class GameSessionCurrentLevel: MonoBehaviour
             _spawner.CreateProjectile(this);            
         }
     }
+
     public void CheckHittingZone()
     {
-        _currentProjectile = _spawner.CurrentProjectile;        
-
-        for (int i = 0; i < _currentProjectile.Count; i++)
+        _currentProjectile = _spawner.CurrentProjectile;
+        int totalScore = 0; 
+        foreach (var projectile in _currentProjectile)
+        {
+            totalScore += projectile.GetComponent<CheckHitting>().GetCountScore();
+        }
+        _uiPanel.SetCountScore(totalScore);
+        /*for (int i = 0; i < _currentProjectile.Count; i++)
         {
             if (_currentProjectile[i].GetComponent<CheckHitting>().HittingZone == true)
             {
@@ -154,7 +162,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
             {
                 _uiPanel.SetColorLifePanel(i, Color.grey);
             }
-        }        
+        }*/
     }
 
     public void ResetData(int currentLevel)
@@ -162,7 +170,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
         _mainCameraMovement.ReturnPosition();               
         _numberProjectilePulling = 0;
         _numberProjectileAtTarget = 0;
-        _uiPanel.ResetLifePanel();            
+        //_uiPanel.ResetLifePanel();            
         _uiPanel.HideResultPanel();
     }
 
