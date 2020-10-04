@@ -121,36 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6201061
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6201062}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6201062
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6201061}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 130.71}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1399223920}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &22190529
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +599,7 @@ Transform:
   m_Children:
   - {fileID: 1701247521}
   m_Father: {fileID: 1399223920}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &177256141
 GameObject:
@@ -5967,7 +5937,6 @@ Transform:
   - {fileID: 2004348495}
   - {fileID: 177256142}
   - {fileID: 1413578761}
-  - {fileID: 6201062}
   - {fileID: 168892897}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -7953,7 +7922,7 @@ PrefabInstance:
     - target: {fileID: 8920500156397079142, guid: 15b71940135f67042914ce2274932fdc,
         type: 3}
       propertyPath: m_Name
-      value: UI
+      value: UIManager
       objectReference: {fileID: 0}
     - target: {fileID: 8920500156432436017, guid: 15b71940135f67042914ce2274932fdc,
         type: 3}
@@ -8222,7 +8191,7 @@ PrefabInstance:
     - target: {fileID: 3565276233296381500, guid: 2fd2527c864d64c4e80ac886cd3131bf,
         type: 3}
       propertyPath: m_Name
-      value: Audio
+      value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 3565276233747082675, guid: 2fd2527c864d64c4e80ac886cd3131bf,
         type: 3}

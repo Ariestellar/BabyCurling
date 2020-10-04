@@ -37,6 +37,15 @@ public class Spawner : MonoBehaviour
         projectileFlight.FinishFlight += _gameSessionSurrentLevel.CheckVictory;
         projectileFlight.FinishFlight += controllerProjectile.AnimationStateStopped;
 
+        if (_currentProjectile.Count != 0)
+        {
+            ProjectileFlight projectileFlightPrevious = _currentProjectile[_currentProjectile.Count - 1].GetComponent<ProjectileFlight>();
+
+            projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.IncreaseNumberProjectilePulling;
+            projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.CheckVictory;
+            projectileFlightPrevious.FinishFlight -= controllerProjectile.AnimationStateStopped;
+        }
+
         _currentProjectile.Add(projectile);
     }
 

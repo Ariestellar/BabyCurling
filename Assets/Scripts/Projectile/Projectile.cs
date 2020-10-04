@@ -11,9 +11,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int _pullingForce;
     [SerializeField] private Animator _animationProjectile;    
     
-    private Vector3 _startPositionMouse;
-    private CameraMovement _cameraMovement;
-    private Camera _camera;
+
+    private CameraMovement _cameraMovement;    
     private Rigidbody _rigidbody;       
     private ProjectileFlight _projectileMovement;
     private AudioManager _audioManager;
@@ -25,8 +24,7 @@ public class Projectile : MonoBehaviour
     }
 
     public void Init(GameSessionCurrentLevel gameSessionCurrentLevel)
-    {             
-        _camera = gameSessionCurrentLevel.GetMainCamera();
+    {
         _cameraMovement = gameSessionCurrentLevel.GetCameraMovement();
         _audioManager = gameSessionCurrentLevel.GetAudioManager();        
     }
@@ -46,7 +44,7 @@ public class Projectile : MonoBehaviour
         //включаем скрипт слежения камеры что бы проследила за снарядом во время полета
         _cameraMovement.ForProjectile();
         //Выключаем этот скрипт тк больше не нужен
-        this.enabled = false;
+        //this.enabled = false;
     }
 
     public void RotateForwardDirection(float forwardDirection)

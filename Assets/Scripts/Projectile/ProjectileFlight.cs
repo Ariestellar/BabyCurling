@@ -28,8 +28,7 @@ public class ProjectileFlight : MonoBehaviour
                 else
                 {
                     FinishFlight?.Invoke();
-                    _isFlight = false;
-                    this.enabled = false;//выключаем этот класс за ненадобностью 
+                    _isFlight = false;                    
                 }                
             }
             _previousPosition = transform.position.z;
@@ -54,5 +53,13 @@ public class ProjectileFlight : MonoBehaviour
     private void OnDisable()
     {
         _finishFlight = null;
-    }    
+    }
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<ProjectileFlight>())
+        {
+            _isFlight = true;
+        }
+    }*/
 }
