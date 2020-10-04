@@ -14,34 +14,9 @@ public class UIPanel : MonoBehaviour
     [SerializeField] private GameObject _brifing;
     [SerializeField] private GameObject _buttonMainMenu;
     [SerializeField] private GameObject _tutor;
-    [SerializeField] private Text _levelText;    
-
-    //private Image[] _lifeImages; 
-
-    private void Awake()
-    {
-        //_lifeImages = _scorePanel.GetComponentsInChildren<Image>();             
-    }
-
-    /*public void SetColorLifePanel(int countLife, Color color)
-    {
-        if (color == Color.green)
-        {
-            _lifeImages[countLife + 1].sprite = _lifeSprite[2];
-        } else if (color == Color.grey)
-        {
-            _lifeImages[countLife + 1].sprite = _lifeSprite[1];
-        }               
-    }*/
-
-    /*public void ResetLifePanel()
-    {    
-        for (int i = 1; i < 5; i++)
-        {
-            _lifeImages[i].sprite = _lifeSprite[0];
-        }
-    }*/
-
+    [SerializeField] private Text _levelText;
+    [SerializeField] private GameObject SecondCameraTopImage;
+        
     public void SetCountScore(int totalScore)
     {
         _scorePanel.SetTextPlayerScore(totalScore);
@@ -72,6 +47,7 @@ public class UIPanel : MonoBehaviour
     {        
         _buttonMainMenu.SetActive(false);
         _tutor.SetActive(false);
+        SecondCameraTopImage.SetActive(true);
     }
 
     public void ButtonContinueLevel()
