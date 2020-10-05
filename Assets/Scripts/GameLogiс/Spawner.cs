@@ -22,7 +22,8 @@ public class Spawner : MonoBehaviour
         projectile.transform.position = _positionStartProjectile.position;
         projectile.transform.Rotate(Vector3.up, _positionStartProjectile.eulerAngles.y);
 
-        _gameSessionSurrentLevel.GetCameraMovement().SetTarget(projectile.transform);//При создании снаряда подменяем таргет слежения у камеры
+        _gameSessionSurrentLevel.GetCameraMovement().SetTarget(projectile.transform);//При создании снаряда подменяем таргет слежения у главной камеры
+        _gameSessionSurrentLevel.GetSecondCameraMovement().SetTarget(projectile.transform);//При создании снаряда подменяем таргет слежения у второстепенной камеры
         _gameSessionSurrentLevel.TouchHandler.SetProjectile(controllerProjectile);
         controllerProjectile.Init(_gameSessionSurrentLevel);
         projectile.GetComponent<ChekClash>().Init(_gameSessionSurrentLevel.GetAudioManager());
@@ -37,13 +38,14 @@ public class Spawner : MonoBehaviour
         projectileFlight.FinishFlight += _gameSessionSurrentLevel.CheckVictory;
         projectileFlight.FinishFlight += controllerProjectile.AnimationStateStopped;
 
-        if (_currentProjectile.Count != 0)
+        if (_currentProjectile.Count != 0)//Предудущий снаряд отписываем от событий
         {
             ProjectileFlight projectileFlightPrevious = _currentProjectile[_currentProjectile.Count - 1].GetComponent<ProjectileFlight>();
 
             projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.IncreaseNumberProjectilePulling;
             projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.CheckVictory;
             projectileFlightPrevious.FinishFlight -= controllerProjectile.AnimationStateStopped;
+            projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.CheckHittingZone;
         }
 
         _currentProjectile.Add(projectile);
