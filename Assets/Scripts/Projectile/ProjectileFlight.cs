@@ -12,6 +12,8 @@ public class ProjectileFlight : MonoBehaviour
     private bool _isStopPlatform;//снаряд остановился на платформе
     private float _previousPosition;
 
+    public bool IsFlight => _isFlight;
+
     public Action FinishFlight { get => _finishFlight; set => _finishFlight = value; }
 
     private void FixedUpdate()

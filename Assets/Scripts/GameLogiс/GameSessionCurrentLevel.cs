@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameSessionCurrentLevel: MonoBehaviour
 {
     [SerializeField] private Camera _mainCamera;
+    [SerializeField] private SecondCameraMovement _secondCameraMovement;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private UIPanel _uiPanel;
     [SerializeField] private Transform _targetPosition;
@@ -15,11 +16,11 @@ public class GameSessionCurrentLevel: MonoBehaviour
     private TouchHandler _touchHandler;       
     private StateGame _stateGame;    
     private CanvasScaler _canvasScaler;    
-    private int _numberProjectilePulling;
-    private int _numberProjectileAtTarget;
+    private int _numberProjectilePulling;    
     private CameraMovement _mainCameraMovement;
     private Spawner _spawner;
-    private List<GameObject> _currentProjectile;    
+    private List<GameObject> _currentProjectile;
+    private int _totalScore;
 
     public StateGame StateLevel => _stateGame;
     public int NumberProjectilePulling => _numberProjectilePulling;
@@ -59,6 +60,19 @@ public class GameSessionCurrentLevel: MonoBehaviour
         }                        
     }
 
+    private bool СheckingStopAllProjectiles(List<GameObject> currentProjectile)
+    {
+        bool numberProjectileInFlight = false;
+        foreach (var projectile in currentProjectile)
+        {
+            if (projectile.GetComponent<ProjectileFlight>().IsFlight == true)
+            {
+                numberProjectileInFlight = true;
+            }
+        }
+        return numberProjectileInFlight;
+    }
+
     public void ResetLevel()
     {
         ResetData(DataGame.currentLevel);
@@ -67,13 +81,25 @@ public class GameSessionCurrentLevel: MonoBehaviour
         _spawner.CreateProjectile(this);
     }
 
+    private IEnumerator WaitingAllProjectileStop(List<GameObject> currentProjectile)
+    {
+        Debug.Log("Кто то не остановился");
+        yield return new WaitForFixedUpdate();
+        if (СheckingStopAllProjectiles(currentProjectile) == false)
+        {
+            Debug.Log("Все остановились");
+            _totalScore = GetTotalScore(currentProjectile);
+            _uiPanel.SetCountScore(_totalScore);
+            yield break;
+        }        
+    }
+
     public void ContinueLevel()
     {
         if (StateLevel == StateGame.Victory)
         {            
             DataGame.LevelUp();
-            SceneTransition.SwitchToScene("Level" + DataGame.currentLevel);
-            //SceneManager.LoadScene("Level" + DataGame.currentLevel);            
+            SceneTransition.SwitchToScene("Level" + DataGame.currentLevel);                       
         }
         else
         {
@@ -86,19 +112,14 @@ public class GameSessionCurrentLevel: MonoBehaviour
         _numberProjectilePulling += 1;        
     }
 
-    public void IncreaseNumberProjectileAtTarget()
-    {
-        _numberProjectileAtTarget += 1;              
-    }
-
-    public void ReduceNumberProjectileAtTarget()
-    {
-        _numberProjectileAtTarget -= 1;        
-    }
-
     public CameraMovement GetCameraMovement()
     {
         return _mainCameraMovement;
+    }
+
+    public SecondCameraMovement GetSecondCameraMovement()
+    {
+        return _secondCameraMovement;
     }
 
     public Camera GetMainCamera()
@@ -126,14 +147,17 @@ public class GameSessionCurrentLevel: MonoBehaviour
     }
 
     public void  CheckVictory()
-    {
-        if (_numberProjectileAtTarget >= 2)
-        {           
-            Victory();
-        }
-        else if(_numberProjectilePulling == 4)
-        {            
-            Defeat();
+    {        
+        if (_numberProjectilePulling == 4)
+        {
+            if (_totalScore > 100)
+            {
+                Victory();
+            }
+            else
+            {
+                Defeat();
+            }            
         }
         else
         {
@@ -145,32 +169,24 @@ public class GameSessionCurrentLevel: MonoBehaviour
 
     public void CheckHittingZone()
     {
-        _currentProjectile = _spawner.CurrentProjectile;
-        int totalScore = 0; 
-        foreach (var projectile in _currentProjectile)
+        Debug.Log("Проверка сработала");
+        StartCoroutine(WaitingAllProjectileStop(_spawner.CurrentProjectile));        
+    }
+
+    private int GetTotalScore(List<GameObject> currentProjectile)
+    {        
+        int totalScore = 0;
+        foreach (var projectile in currentProjectile)
         {
             totalScore += projectile.GetComponent<CheckHitting>().GetCountScore();
-        }
-        _uiPanel.SetCountScore(totalScore);
-        /*for (int i = 0; i < _currentProjectile.Count; i++)
-        {
-            if (_currentProjectile[i].GetComponent<CheckHitting>().HittingZone == true)
-            {
-                _uiPanel.SetColorLifePanel(i, Color.green);
-            }
-            else
-            {
-                _uiPanel.SetColorLifePanel(i, Color.grey);
-            }
-        }*/
+        }        
+        return totalScore;
     }
 
     public void ResetData(int currentLevel)
     {        
         _mainCameraMovement.ReturnPosition();               
-        _numberProjectilePulling = 0;
-        _numberProjectileAtTarget = 0;
-        //_uiPanel.ResetLifePanel();            
+        _numberProjectilePulling = 0;                  
         _uiPanel.HideResultPanel();
     }
 
