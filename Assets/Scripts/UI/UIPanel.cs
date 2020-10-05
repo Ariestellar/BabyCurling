@@ -19,7 +19,7 @@ public class UIPanel : MonoBehaviour
         
     public void SetCountScore(int totalScore)
     {
-        _scorePanel.SetTextPlayerScore(totalScore);
+        _scorePanel.SetNumberPlayerPoints(totalScore);
     }
 
     public void ShowResultPanel(StateGame stateGame)
