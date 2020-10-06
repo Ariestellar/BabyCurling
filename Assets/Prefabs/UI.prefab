@@ -2532,7 +2532,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: feed two cats
+  m_Text: 
 --- !u!1 &4573973682820928691
 GameObject:
   m_ObjectHideFlags: 0

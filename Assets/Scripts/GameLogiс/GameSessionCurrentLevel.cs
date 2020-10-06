@@ -13,14 +13,14 @@ public class GameSessionCurrentLevel: MonoBehaviour
     [SerializeField] private UIPanel _uiPanel;
     [SerializeField] private Transform _targetPosition;
     [SerializeField] private GameObject _firework;
+    [SerializeField] private TypesPlayingField _typesPlayingField;
 
     private TouchHandler _touchHandler;       
     private StateGame _stateGame;    
     private CanvasScaler _canvasScaler;    
     private int _numberProjectilePulling;    
     private CameraMovement _mainCameraMovement;
-    private Spawner _spawner;
-    //private List<GameObject> _currentProjectile;
+    private Spawner _spawner;    
     private int _totalScore;
 
     public StateGame StateLevel => _stateGame;    
@@ -37,7 +37,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
 
     private void Start()
     {
-        _uiPanel.SetTextLevel(DataGame.currentLevel);
+        _uiPanel.SetTextLevel(SceneManager.GetActiveScene().buildIndex);
         _touchHandler.startLevel += StartCurrentLevel;
         if (Screen.width <= 480)
         {
@@ -59,58 +59,6 @@ public class GameSessionCurrentLevel: MonoBehaviour
             StartCurrentLevel();
         }                        
     }
-
-    private bool СheckingStopAllProjectiles(List<GameObject> currentProjectile)
-    {
-        bool numberProjectileInFlight = false;
-        foreach (var projectile in currentProjectile)
-        {
-            if (projectile.GetComponent<ProjectileFlight>().IsFlight == true)
-            {
-                numberProjectileInFlight = true;
-            }
-        }
-        return numberProjectileInFlight;
-    }
-
-    public void ResetLevel()
-    {
-        ResetData(DataGame.currentLevel);
-        _spawner.DeleteCurrentProjectline();        
-        _touchHandler.gameObject.SetActive(true);
-        _spawner.CreateProjectile(this);
-    }
-
-    private IEnumerator WaitingAllProjectileStop(List<GameObject> currentProjectile)
-    {        
-        yield return new WaitForFixedUpdate();
-        if (СheckingStopAllProjectiles(currentProjectile) == false)
-        {            
-            _totalScore = GetTotalScore(currentProjectile);
-            _uiPanel.SetCountScore(_totalScore);
-            CheckVictory();
-            yield break;
-        }        
-    }
-
-    public void ContinueLevel()
-    {
-        if (StateLevel == StateGame.Victory)
-        {            
-            DataGame.LevelUp();
-            SceneTransition.SwitchToScene("Level" + DataGame.currentLevel);                       
-        }
-        else
-        {
-            ResetLevel();
-        }
-    }
-
-    public void IncreaseNumberProjectilePulling()
-    {
-        _numberProjectilePulling += 1;        
-    }
-
     public CameraMovement GetCameraMovement()
     {
         return _mainCameraMovement;
@@ -129,6 +77,42 @@ public class GameSessionCurrentLevel: MonoBehaviour
     public AudioManager GetAudioManager()
     {
         return _audioManager;
+    }
+    public void IncreaseNumberProjectilePulling()
+    {
+        _numberProjectilePulling += 1;
+    }
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);        
+    }
+
+    //После остановки запущенного снаряда проверям остановились ли все другие снаряды
+    public void CheckHittingZone()
+    {
+        StartCoroutine(WaitingAllProjectileStop(_spawner.CurrentProjectile));
+    }   
+
+    public void ContinueLevel()
+    {
+        if (StateLevel == StateGame.Victory)
+        {
+            DataGame.LevelUp();
+            SceneTransition.SwitchToScene("Level" + DataGame.currentLevel);
+        }
+        else
+        {
+            ResetLevel();
+        }
+    }
+
+    private void StartCurrentLevel()
+    {
+        _uiPanel.ShowBrifing();
+        _uiPanel.ShowLifePanel();
+        _uiPanel.HideButtonMainMenu();
+        _mainCameraMovement.ReturnPosition();
     }
 
     private void Defeat()
@@ -155,6 +139,32 @@ public class GameSessionCurrentLevel: MonoBehaviour
             
         }
         StartCoroutine(ShowResultVictoryPanel());        
+    }
+
+    //Проверяем все ли снаряды на сцене остановились(т.к. могут быть те кто продолжает катиться от толчка)
+    private bool СheckingStopAllProjectiles(List<GameObject> currentProjectile)
+    {
+        bool numberProjectileInFlight = false;
+        foreach (var projectile in currentProjectile)
+        {
+            if (projectile.GetComponent<ProjectileFlight>().IsFlight == true)
+            {
+                numberProjectileInFlight = true;
+            }
+        }
+        return numberProjectileInFlight;
+    }
+    //Ожидаем пока все снаряды прекратять котится потом запускаем подсчет очков и проверку условий победы
+    private IEnumerator WaitingAllProjectileStop(List<GameObject> currentProjectile)
+    {
+        yield return new WaitForFixedUpdate();
+        if (СheckingStopAllProjectiles(currentProjectile) == false)
+        {
+            _totalScore = GetTotalScore(currentProjectile);
+            _uiPanel.SetCountScore(_totalScore);
+            CheckVictory();
+            yield break;
+        }
     }
 
     private IEnumerator ShowResultVictoryPanel()
@@ -186,33 +196,13 @@ public class GameSessionCurrentLevel: MonoBehaviour
         }
     }
 
-    public void CheckHittingZone()
-    {        
-        StartCoroutine(WaitingAllProjectileStop(_spawner.CurrentProjectile));        
-    }
-
     private int GetTotalScore(List<GameObject> currentProjectile)
     {        
         int totalScore = 0;
         foreach (var projectile in currentProjectile)
         {
-            totalScore += projectile.GetComponent<CheckHitting>().GetCountScore();
+            totalScore += projectile.GetComponent<CheckHitting>().GetCountScore(_typesPlayingField);
         }        
         return totalScore;
-    }
-
-    public void ResetData(int currentLevel)
-    {        
-        _mainCameraMovement.ReturnPosition();               
-        _numberProjectilePulling = 0;                  
-        _uiPanel.HideResultPanel();
-    }
-
-    private void StartCurrentLevel()
-    {
-        _uiPanel.ShowBrifing();
-        _uiPanel.ShowLifePanel();
-        _uiPanel.HideButtonMainMenu();
-        _mainCameraMovement.ReturnPosition();               
     }
 }
