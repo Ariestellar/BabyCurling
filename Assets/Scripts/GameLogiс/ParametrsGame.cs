@@ -28,3 +28,10 @@ public enum TypesDances
     BreakDancing,
     SambaDancing
 }
+
+public enum TypesPlayingField
+{
+    RoundGoals,
+    SquareGoals
+}
+

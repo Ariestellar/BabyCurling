@@ -56,12 +56,4 @@ public class ProjectileFlight : MonoBehaviour
     {
         _finishFlight = null;
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<ProjectileFlight>())
-        {
-            _isFlight = true;
-        }
-    }*/
 }

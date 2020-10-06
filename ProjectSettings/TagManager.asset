@@ -9,6 +9,9 @@ TagManager:
   - PlatformStopper
   - HitPoint
   - HittingZone
+  - HittingZone20
+  - HittingZone50
+  - HittingZone100
   layers:
   - Default
   - TransparentFX
