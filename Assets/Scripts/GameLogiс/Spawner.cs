@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
 
         projectileFlight.FinishFlight += _gameSessionSurrentLevel.IncreaseNumberProjectilePulling;
         projectileFlight.FinishFlight += _gameSessionSurrentLevel.CheckHittingZone;
-        projectileFlight.FinishFlight += _gameSessionSurrentLevel.CheckVictory;
+        //projectileFlight.FinishFlight += _gameSessionSurrentLevel.CheckVictory;
         projectileFlight.FinishFlight += controllerProjectile.AnimationStateStopped;
 
         if (_currentProjectile.Count != 0)//Предудущий снаряд отписываем от событий
@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
             ProjectileFlight projectileFlightPrevious = _currentProjectile[_currentProjectile.Count - 1].GetComponent<ProjectileFlight>();
 
             projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.IncreaseNumberProjectilePulling;
-            projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.CheckVictory;
+            //projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.CheckVictory;
             projectileFlightPrevious.FinishFlight -= controllerProjectile.AnimationStateStopped;
             projectileFlightPrevious.FinishFlight -= _gameSessionSurrentLevel.CheckHittingZone;
         }

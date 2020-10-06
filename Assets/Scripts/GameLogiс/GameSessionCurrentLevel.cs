@@ -12,6 +12,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private UIPanel _uiPanel;
     [SerializeField] private Transform _targetPosition;
+    [SerializeField] private GameObject _firework;
 
     private TouchHandler _touchHandler;       
     private StateGame _stateGame;    
@@ -19,11 +20,10 @@ public class GameSessionCurrentLevel: MonoBehaviour
     private int _numberProjectilePulling;    
     private CameraMovement _mainCameraMovement;
     private Spawner _spawner;
-    private List<GameObject> _currentProjectile;
+    //private List<GameObject> _currentProjectile;
     private int _totalScore;
 
-    public StateGame StateLevel => _stateGame;
-    public int NumberProjectilePulling => _numberProjectilePulling;
+    public StateGame StateLevel => _stateGame;    
     public TouchHandler TouchHandler => _touchHandler;
     public Transform TargetPosition => _targetPosition;
 
@@ -82,14 +82,13 @@ public class GameSessionCurrentLevel: MonoBehaviour
     }
 
     private IEnumerator WaitingAllProjectileStop(List<GameObject> currentProjectile)
-    {
-        Debug.Log("Кто то не остановился");
+    {        
         yield return new WaitForFixedUpdate();
         if (СheckingStopAllProjectiles(currentProjectile) == false)
-        {
-            Debug.Log("Все остановились");
+        {            
             _totalScore = GetTotalScore(currentProjectile);
             _uiPanel.SetCountScore(_totalScore);
+            CheckVictory();
             yield break;
         }        
     }
@@ -141,12 +140,32 @@ public class GameSessionCurrentLevel: MonoBehaviour
 
     private void Victory()
     {
-        _touchHandler.gameObject.SetActive(false);
-        _stateGame = StateGame.Victory;
-        _uiPanel.ShowResultPanel(_stateGame);        
+        List<GameObject>  currentProjectile = _spawner.CurrentProjectile;
+        _firework.SetActive(true);
+        for (int i = 0; i < currentProjectile.Count; i++)
+        {
+            if (i % 2 == 0)
+            {
+                currentProjectile[i].GetComponent<Projectile>().AnimationStateDancing(TypesDances.BreakDancing);
+            }
+            else
+            {
+                currentProjectile[i].GetComponent<Projectile>().AnimationStateDancing(TypesDances.SambaDancing);
+            }
+            
+        }
+        StartCoroutine(ShowResultVictoryPanel());        
     }
 
-    public void  CheckVictory()
+    private IEnumerator ShowResultVictoryPanel()
+    {
+        yield return new WaitForSeconds(3);
+        _touchHandler.gameObject.SetActive(false);
+        _stateGame = StateGame.Victory;
+        _uiPanel.ShowResultPanel(_stateGame);
+    }
+
+    private void  CheckVictory()
     {        
         if (_numberProjectilePulling == 4)
         {
@@ -168,8 +187,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     }
 
     public void CheckHittingZone()
-    {
-        Debug.Log("Проверка сработала");
+    {        
         StartCoroutine(WaitingAllProjectileStop(_spawner.CurrentProjectile));        
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -60,5 +61,10 @@ public class Projectile : MonoBehaviour
     public void AnimationStateStopped()
     {
         _animationProjectile.SetTrigger("FinischPose");
+    }
+
+    public void AnimationStateDancing(TypesDances typesDances)
+    {
+        _animationProjectile.SetTrigger(Convert.ToString(typesDances));        
     }
 }
