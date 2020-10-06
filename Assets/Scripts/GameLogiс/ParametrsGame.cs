@@ -22,3 +22,9 @@ public enum DirectionPusher
     back,
     diag
 }
+
+public enum TypesDances
+{
+    BreakDancing,
+    SambaDancing
+}
