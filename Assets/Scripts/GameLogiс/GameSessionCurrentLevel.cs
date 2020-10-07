@@ -91,6 +91,9 @@ public class GameSessionCurrentLevel: MonoBehaviour
     //После остановки запущенного снаряда проверям остановились ли все другие снаряды
     public void CheckHittingZone()
     {
+        /*_totalScore = GetTotalScore(_spawner.CurrentProjectile);
+        _uiPanel.SetCountScore(_totalScore);
+        CheckVictory();*/
         StartCoroutine(WaitingAllProjectileStop(_spawner.CurrentProjectile));
     }   
 
@@ -99,7 +102,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
         if (StateLevel == StateGame.Victory)
         {
             DataGame.LevelUp();
-            SceneTransition.SwitchToScene("Level" + DataGame.currentLevel);
+            SceneManager.LoadScene("Level" + DataGame.currentLevel);
         }
         else
         {
@@ -154,12 +157,14 @@ public class GameSessionCurrentLevel: MonoBehaviour
         }
         return numberProjectileInFlight;
     }
-    //Ожидаем пока все снаряды прекратять котится потом запускаем подсчет очков и проверку условий победы
+
+    //Ожидаем пока все снаряды прекратять катится потом запускаем подсчет очков и проверку условий победы
     private IEnumerator WaitingAllProjectileStop(List<GameObject> currentProjectile)
     {
         yield return new WaitForFixedUpdate();
         if (СheckingStopAllProjectiles(currentProjectile) == false)
         {
+            Debug.Log("Все прекратили катиться");
             _totalScore = GetTotalScore(currentProjectile);
             _uiPanel.SetCountScore(_totalScore);
             CheckVictory();

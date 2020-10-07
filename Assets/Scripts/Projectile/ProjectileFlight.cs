@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ProjectileFlight : MonoBehaviour
 {
     private Action _finishFlight;    
-    private bool _isFlight;
+    [SerializeField] private bool _isFlight;
     private bool _isTemporaryStop;//временная остановка на платформе
     private bool _isStopPlatform;//снаряд остановился на платформе
     private float _previousPosition;
@@ -22,7 +22,7 @@ public class ProjectileFlight : MonoBehaviour
         if (_isFlight)
         {
             if (transform.position.z == _previousPosition)
-            {
+            {                
                 if (_isTemporaryStop)//если это временная остановка то:
                 {
                     _isStopPlatform = true;
@@ -31,7 +31,7 @@ public class ProjectileFlight : MonoBehaviour
                 {
                     FinishFlight?.Invoke();
                     _isFlight = false;                    
-                }                
+                }            
             }
             _previousPosition = transform.position.z;
         }
@@ -50,6 +50,15 @@ public class ProjectileFlight : MonoBehaviour
     public bool GetisStopPlatform()
     {
         return _isStopPlatform;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<ProjectileFlight>())
+        {
+            Debug.Log("Столкновение");
+            collision.gameObject.GetComponent<ProjectileFlight>().SetStateFlight(true);            
+        }
     }
 
     private void OnDisable()
