@@ -5,16 +5,10 @@ using UnityEngine;
 
 public class CheckHitting : MonoBehaviour
 {   
-    private Transform _target;
-    private Transform _projectile;
+    private Transform _target;    
     private bool _isHittingZone;
     [SerializeField] private int _numberPoint;
     [SerializeField] private float _distanceToTarget;
-
-    private void Awake()
-    {
-        _projectile = gameObject.transform;
-    }
 
     public void Init(Transform targetPosition)
     {
@@ -25,7 +19,7 @@ public class CheckHitting : MonoBehaviour
     {        
         if (typesPlayingField == TypesPlayingField.RoundGoals) 
         {
-            float distanceToTarget = Vector3.Distance(_projectile.position, _target.position);
+            float distanceToTarget = Vector3.Distance(transform.position, _target.position);
             _distanceToTarget = distanceToTarget;
             if (_isHittingZone)
             {

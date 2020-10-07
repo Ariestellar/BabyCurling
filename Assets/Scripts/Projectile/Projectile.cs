@@ -12,7 +12,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int _pullingForce;
     [SerializeField] private Animator _animationProjectile;    
     
-
     private CameraMovement _cameraMovement;    
     private Rigidbody _rigidbody;       
     private ProjectileFlight _projectileMovement;
