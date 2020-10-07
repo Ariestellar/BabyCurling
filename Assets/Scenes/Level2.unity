@@ -3480,6 +3480,110 @@ Transform:
   m_Father: {fileID: 459114472}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &782704351
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1108386957069227307, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145219266778641524, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531405618573478247, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090041221450187699, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063233224383185237, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Tribune
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 92.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876784231356603375, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896726718810598970, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011127567177940186, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142300742009818422, guid: 05b58b28c5fce88468aeebbd38a163f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05b58b28c5fce88468aeebbd38a163f2, type: 3}
 --- !u!1 &786192252
 GameObject:
   m_ObjectHideFlags: 0
