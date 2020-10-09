@@ -122,7 +122,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     {
         _touchHandler.gameObject.SetActive(false);
         _stateGame = StateGame.Defeat;
-        _uiPanel.ShowResultPanel(_stateGame);        
+        _uiPanel.ShowResultPanel(_stateGame, _totalScore);        
     }
 
     private void Victory()
@@ -177,7 +177,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
         yield return new WaitForSeconds(3);
         _touchHandler.gameObject.SetActive(false);
         _stateGame = StateGame.Victory;
-        _uiPanel.ShowResultPanel(_stateGame);
+        _uiPanel.ShowResultPanel(_stateGame, _totalScore);
     }
 
     private void  CheckVictory()

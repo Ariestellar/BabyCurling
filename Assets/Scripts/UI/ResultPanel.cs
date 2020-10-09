@@ -12,9 +12,9 @@ public class ResultPanel : MonoBehaviour
     [SerializeField] private Sprite _buttonImageDefeat;
     [SerializeField] private Sprite _imageVictory;
     [SerializeField] private Sprite _buttonimageVictory;
-    //[SerializeField] private Text _resultText;
+    [SerializeField] private Text _totalScore;
 
-    public void Show(StateGame stateGame)
+    public void Show(StateGame stateGame, int totalScore)
     {
         if (SceneManager.sceneCountInBuildSettings > DataGame.currentLevel)
         {
@@ -22,13 +22,13 @@ public class ResultPanel : MonoBehaviour
             {
                 _image.sprite = _imageVictory;
                 _button.sprite = _buttonimageVictory;
-                //_resultText.text = "Victory";
+                _totalScore.text = "TOTAL SCORE: " + totalScore;
             }
             else if (stateGame == StateGame.Defeat)
             {
                 _image.sprite = _imageDefeat;
                 _button.sprite = _buttonImageDefeat;
-                //_resultText.text = "Defeat";
+                _totalScore.text = "TOTAL SCORE: " + totalScore;
             }
         }
         else

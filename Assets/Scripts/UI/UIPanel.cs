@@ -22,9 +22,9 @@ public class UIPanel : MonoBehaviour
         _scorePanel.SetNumberPlayerPoints(totalScore);
     }
 
-    public void ShowResultPanel(StateGame stateGame)
+    public void ShowResultPanel(StateGame stateGame, int totalScore)
     {
-        _resultPanel.Show(stateGame);
+        _resultPanel.Show(stateGame, totalScore);
         _resultPanel.gameObject.SetActive(true);
     }
 
