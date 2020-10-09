@@ -8446,6 +8446,12 @@ PrefabInstance:
       propertyPath: _participantCell.Array.data[2]
       value: 
       objectReference: {fileID: 574380959}
+    - target: {fileID: 3375631489509195711, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: _dataPlayers
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfa0e1628f38c14fb676d2a7cef34c0,
+        type: 2}
     - target: {fileID: 3799991142593238211, guid: 15b71940135f67042914ce2274932fdc,
         type: 3}
       propertyPath: m_AnchorMin.y

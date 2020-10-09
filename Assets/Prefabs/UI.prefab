@@ -1508,6 +1508,7 @@ MonoBehaviour:
   - {fileID: 7674473801304212193}
   - {fileID: 7906765816880952415}
   - {fileID: 7946539106518599881}
+  _dataPlayers: {fileID: 11400000, guid: eb7b45d3bc5c3494c9c3b3343d5df97e, type: 2}
 --- !u!1 &3073798309661302606
 GameObject:
   m_ObjectHideFlags: 0
