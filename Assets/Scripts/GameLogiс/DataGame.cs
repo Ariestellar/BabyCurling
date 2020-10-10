@@ -5,6 +5,8 @@ public static class DataGame
 {
     public static int currentLevel;
     public static bool isMainMenu = true;
+    public static string NamePlayer;
+    public static bool isSetNamePlayer;
 
     public static void LevelUp()
     {
@@ -32,5 +34,11 @@ public static class DataGame
         {
             return 1;
         }        
+    }
+
+    public static void SetNamePlayer(string namePlayer)
+    {
+        NamePlayer = namePlayer;
+        isSetNamePlayer = true;
     }
 }

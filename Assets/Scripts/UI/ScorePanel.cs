@@ -17,11 +17,17 @@ public class ScorePanel : MonoBehaviour
         _participantCell[0].SetData(_dataPlayers.ScorePlayer1, _dataPlayers.NamePlayer1);
         _participantCell[1].SetData(_dataPlayers.ScorePlayer2, _dataPlayers.NamePlayer2);
         _participantCell[2].SetData(_dataPlayers.ScorePlayer3, _dataPlayers.NamePlayer3);
+        _playerCell.SetData(0, DataGame.NamePlayer);
     }
     public void SetNumberPlayerPoints(int numberPoints)
     {
-        _playerCell.SetData(numberPoints, "Player");
+        _playerCell.SetData(numberPoints, DataGame.NamePlayer);
         ChangePositionTable(numberPoints);
+    }
+
+    public DataPlayers GetDataPlayers()
+    {
+        return _dataPlayers;
     }
 
     private void ChangePositionTable(int numberPointsPlayer)

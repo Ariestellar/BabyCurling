@@ -4365,6 +4365,7 @@ MonoBehaviour:
   _isMovementForProjectile: 0
   _speedRotateGo: 0
   _speedRotateReturn: 0
+  _stateGame: 3
 --- !u!1 &984754236
 GameObject:
   m_ObjectHideFlags: 0
