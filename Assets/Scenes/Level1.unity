@@ -4435,6 +4435,8 @@ MonoBehaviour:
   _isMovementForProjectile: 0
   _speedRotateGo: 0
   _speedRotateReturn: 0
+  _stateGame: 3
+  _touchHandler: {fileID: 1950535006}
 --- !u!1 &984754236
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,6 +9340,86 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4668614000324196753, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668614000324196753, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668614000324196753, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668614000324196753, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749502040505604297, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749502040505604297, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749502040505604297, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749502040505604297, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114137658971467623, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114137658971467623, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114137658971467623, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114137658971467623, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321211776460168199, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321211776460168199, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321211776460168199, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321211776460168199, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8080740484360831322, guid: 15b71940135f67042914ce2274932fdc,
         type: 3}
       propertyPath: _audioManager
@@ -9998,6 +10080,18 @@ Transform:
   m_Father: {fileID: 4664851832064394435}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: -90}
+--- !u!114 &1950535006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8080740484360831322, guid: 15b71940135f67042914ce2274932fdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1828096111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e05ef3f1accd541bdb62a371b2f11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2004348494
 GameObject:
   m_ObjectHideFlags: 0

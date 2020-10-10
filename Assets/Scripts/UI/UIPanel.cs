@@ -15,16 +15,30 @@ public class UIPanel : MonoBehaviour
     [SerializeField] private GameObject _buttonMainMenu;
     [SerializeField] private GameObject _tutor;
     [SerializeField] private Text _levelText;
-    [SerializeField] private GameObject SecondCameraTopImage;
-        
+    [SerializeField] private GameObject _secondCameraTopImage;
+    [SerializeField] private NameInputDialog _nameInputDialog;
+
+    private void Awake()
+    {
+        _nameInputDialog.Init(_touchHandler);
+    }
+
+    private void Start()
+    {
+        if (DataGame.isSetNamePlayer == false)
+        {
+            _nameInputDialog.gameObject.SetActive(true);
+            _touchHandler.gameObject.SetActive(false);//Останавливаем обработчик касаний при указании  имени запускаем
+        }
+    }
     public void SetCountScore(int totalScore)
     {
         _scorePanel.SetNumberPlayerPoints(totalScore);
     }
 
-    public void ShowResultPanel(StateGame stateGame)
+    public void ShowResultPanel(StateGame stateGame, int totalScore)
     {
-        _resultPanel.Show(stateGame);
+        _resultPanel.Show(stateGame, totalScore);
         _resultPanel.gameObject.SetActive(true);
     }
 
@@ -47,7 +61,7 @@ public class UIPanel : MonoBehaviour
     {        
         _buttonMainMenu.SetActive(false);
         _tutor.SetActive(false);
-        SecondCameraTopImage.SetActive(true);
+        _secondCameraTopImage.SetActive(true);
     }
 
     public void ButtonContinueLevel()
@@ -68,5 +82,10 @@ public class UIPanel : MonoBehaviour
     public void SetTextLevel(int currentLevel)
     {
         _levelText.text = "Level " + currentLevel;
+    }
+
+    public DataPlayers GetDataPlayers()
+    {
+        return _scorePanel.GetDataPlayers();
     }
 }

@@ -4873,6 +4873,8 @@ MonoBehaviour:
   _isMovementForProjectile: 0
   _speedRotateGo: 0
   _speedRotateReturn: 0
+  _stateGame: 0
+  _touchHandler: {fileID: 1828096113}
 --- !u!1 &984754236
 GameObject:
   m_ObjectHideFlags: 0
@@ -8476,6 +8478,12 @@ PrefabInstance:
       propertyPath: _participantCell.Array.data[2]
       value: 
       objectReference: {fileID: 574380959}
+    - target: {fileID: 3375631489509195711, guid: 15b71940135f67042914ce2274932fdc,
+        type: 3}
+      propertyPath: _dataPlayers
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfa0e1628f38c14fb676d2a7cef34c0,
+        type: 2}
     - target: {fileID: 3799991142593238211, guid: 15b71940135f67042914ce2274932fdc,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -8749,6 +8757,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a0a09f79b0728f48856a4beb8ed4a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1828096113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8080740484360831322, guid: 15b71940135f67042914ce2274932fdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1828096111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e05ef3f1accd541bdb62a371b2f11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1834820307

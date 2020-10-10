@@ -90,10 +90,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
 
     //После остановки запущенного снаряда проверям остановились ли все другие снаряды
     public void CheckHittingZone()
-    {
-        /*_totalScore = GetTotalScore(_spawner.CurrentProjectile);
-        _uiPanel.SetCountScore(_totalScore);
-        CheckVictory();*/
+    {        
         StartCoroutine(WaitingAllProjectileStop(_spawner.CurrentProjectile));
     }   
 
@@ -119,14 +116,17 @@ public class GameSessionCurrentLevel: MonoBehaviour
     }
 
     private void Defeat()
-    {
+    {        
         _touchHandler.gameObject.SetActive(false);
         _stateGame = StateGame.Defeat;
-        _uiPanel.ShowResultPanel(_stateGame);        
+        _mainCameraMovement.SetStateGame(_stateGame);
+        _uiPanel.ShowResultPanel(_stateGame, _totalScore);        
     }
 
     private void Victory()
     {
+        _stateGame = StateGame.Victory;
+        _mainCameraMovement.SetStateGame(_stateGame);
         List<GameObject>  currentProjectile = _spawner.CurrentProjectile;
         _firework.SetActive(true);
         for (int i = 0; i < currentProjectile.Count; i++)
@@ -163,8 +163,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         if (СheckingStopAllProjectiles(currentProjectile) == false)
-        {
-            Debug.Log("Все прекратили катиться");
+        {            
             _totalScore = GetTotalScore(currentProjectile);
             _uiPanel.SetCountScore(_totalScore);
             CheckVictory();
@@ -175,16 +174,20 @@ public class GameSessionCurrentLevel: MonoBehaviour
     private IEnumerator ShowResultVictoryPanel()
     {
         yield return new WaitForSeconds(3);
-        _touchHandler.gameObject.SetActive(false);
-        _stateGame = StateGame.Victory;
-        _uiPanel.ShowResultPanel(_stateGame);
+        _touchHandler.gameObject.SetActive(false);        
+        _uiPanel.ShowResultPanel(_stateGame, _totalScore);
     }
 
     private void  CheckVictory()
-    {        
-        if (_numberProjectilePulling == 4)
+    {
+
+        if (_totalScore > _uiPanel.GetDataPlayers().ScorePlayer1)
         {
-            if (_totalScore > 100)
+            Victory();
+        }
+        else if (_numberProjectilePulling == 4)
+        {
+            if (_totalScore > _uiPanel.GetDataPlayers().ScorePlayer1)
             {
                 Victory();
             }
@@ -194,7 +197,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
             }            
         }
         else
-        {
+        {            
             _mainCameraMovement.ReturnPosition();
             _mainCameraMovement.DeleteTarget();
             _spawner.CreateProjectile(this);            

@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody _rigidbody;       
     private ProjectileFlight _projectileMovement;
     private AudioManager _audioManager;
+    private TouchHandler _touchHandler;
 
     private void Awake()
     {        
@@ -26,7 +27,8 @@ public class Projectile : MonoBehaviour
     public void Init(GameSessionCurrentLevel gameSessionCurrentLevel)
     {
         _cameraMovement = gameSessionCurrentLevel.GetCameraMovement();
-        _audioManager = gameSessionCurrentLevel.GetAudioManager();        
+        _audioManager = gameSessionCurrentLevel.GetAudioManager();
+        _touchHandler = gameSessionCurrentLevel.TouchHandler;
     }
 
     public void PreparationForLaunch()
@@ -36,6 +38,7 @@ public class Projectile : MonoBehaviour
 
     public void Launch(int pullingForce)
     {
+        _touchHandler.gameObject.SetActive(false);
         _audioManager.PlayNya();
         _indicators.Hide();
         _rigidbody.AddForce(transform.forward * pullingForce * 450);

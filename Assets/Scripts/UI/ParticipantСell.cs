@@ -11,8 +11,9 @@ public class ParticipantСell : MonoBehaviour
 
     private int _numberPoints;
 
-    public void SetNumberPoints(int numberPoints)
+    public void SetData(int numberPoints, string name)
     {
+        _name.text = name;
         _numberPoints = numberPoints;
         _scoreText.text = Convert.ToString(_numberPoints);
     }
@@ -20,5 +21,10 @@ public class ParticipantСell : MonoBehaviour
     public int GetNumberPoints()
     {
         return _numberPoints;
+    }
+
+    public string GetName()
+    {
+        return _name.text;
     }
 }

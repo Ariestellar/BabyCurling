@@ -8,18 +8,26 @@ public class ScorePanel : MonoBehaviour
 {
     [SerializeField] private ParticipantСell _playerCell;
     [SerializeField] private ParticipantСell[] _participantCell;
+    [SerializeField] private DataPlayers _dataPlayers;
+
 
     private void Awake()
     {       
         //Установка значений остальных участников, для тестов
-        _participantCell[0].SetNumberPoints(100);
-        _participantCell[1].SetNumberPoints(55);
-        _participantCell[2].SetNumberPoints(5);
+        _participantCell[0].SetData(_dataPlayers.ScorePlayer1, _dataPlayers.NamePlayer1);
+        _participantCell[1].SetData(_dataPlayers.ScorePlayer2, _dataPlayers.NamePlayer2);
+        _participantCell[2].SetData(_dataPlayers.ScorePlayer3, _dataPlayers.NamePlayer3);
+        _playerCell.SetData(0, DataGame.NamePlayer);
     }
     public void SetNumberPlayerPoints(int numberPoints)
     {
-        _playerCell.SetNumberPoints(numberPoints);
+        _playerCell.SetData(numberPoints, DataGame.NamePlayer);
         ChangePositionTable(numberPoints);
+    }
+
+    public DataPlayers GetDataPlayers()
+    {
+        return _dataPlayers;
     }
 
     private void ChangePositionTable(int numberPointsPlayer)

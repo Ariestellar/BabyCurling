@@ -55,8 +55,7 @@ public class ProjectileFlight : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.GetComponent<ProjectileFlight>())
-        {
-            Debug.Log("Столкновение");
+        {            
             collision.gameObject.GetComponent<ProjectileFlight>().SetStateFlight(true);            
         }
     }

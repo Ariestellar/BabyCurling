@@ -11,7 +11,8 @@ public enum StateGame
 {
     Victory,
     Defeat,
-    EndDemo
+    EndDemo,
+    During
 }
 
 public enum DirectionPusher
