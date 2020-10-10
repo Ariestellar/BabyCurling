@@ -163,8 +163,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         if (СheckingStopAllProjectiles(currentProjectile) == false)
-        {
-            Debug.Log("Все прекратили катиться");
+        {            
             _totalScore = GetTotalScore(currentProjectile);
             _uiPanel.SetCountScore(_totalScore);
             CheckVictory();
@@ -198,7 +197,7 @@ public class GameSessionCurrentLevel: MonoBehaviour
             }            
         }
         else
-        {
+        {            
             _mainCameraMovement.ReturnPosition();
             _mainCameraMovement.DeleteTarget();
             _spawner.CreateProjectile(this);            

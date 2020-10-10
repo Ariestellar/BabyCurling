@@ -13,9 +13,11 @@ public class ResultPanel : MonoBehaviour
     [SerializeField] private Sprite _imageVictory;
     [SerializeField] private Sprite _buttonimageVictory;
     [SerializeField] private Text _totalScore;
+    [SerializeField] private PartyPanelResultPanel _partyPane;
 
     public void Show(StateGame stateGame, int totalScore)
     {
+        _partyPane.SetActualPartyPanel();
         if (SceneManager.sceneCountInBuildSettings > DataGame.currentLevel)
         {
             if (stateGame == StateGame.Victory)

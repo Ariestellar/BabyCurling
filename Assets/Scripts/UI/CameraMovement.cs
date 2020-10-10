@@ -12,7 +12,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private bool _isMovementForProjectile;
     [SerializeField] private int _speedRotateGo;
     [SerializeField] private int _speedRotateReturn;    
-    [SerializeField] private StateGame _stateGame;    
+    [SerializeField] private StateGame _stateGame; 
+    [SerializeField] private TouchHandler _touchHandler; 
 
     private float _smooth = 1.0f;
     private Vector3 _offset = new Vector3(0, 15, -10);
@@ -54,8 +55,9 @@ public class CameraMovement : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, _startPosition.position, Time.deltaTime * _smooth);
             transform.rotation = _startPosition.rotation;
 
-            if (Vector3.Distance(transform.position, _startPosition.position) <= 0.1)
+            if (Vector3.Distance(transform.position, _startPosition.position) <= 5f)
             {
+                _touchHandler.gameObject.SetActive(true);
                 _isReturnToStartPosition = false;                
             }
         }

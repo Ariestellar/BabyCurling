@@ -22,4 +22,9 @@ public class ParticipantСell : MonoBehaviour
     {
         return _numberPoints;
     }
+
+    public string GetName()
+    {
+        return _name.text;
+    }
 }

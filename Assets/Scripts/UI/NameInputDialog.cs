@@ -17,8 +17,11 @@ public class NameInputDialog : MonoBehaviour
 
     public void SetName()//Запускаем время игры
     {
-        DataGame.SetNamePlayer(_inputField.text);
-        this.gameObject.SetActive(false);
-        _touchHandler.gameObject.SetActive(true);
+        if (_inputField.text != string.Empty)
+        {
+            DataGame.SetNamePlayer(_inputField.text);
+            this.gameObject.SetActive(false);
+            _touchHandler.gameObject.SetActive(true);
+        }        
     }
 }
