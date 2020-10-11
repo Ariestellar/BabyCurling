@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f12da3d1c4ea74bb16c7062658cafd, type: 3}
   m_Name: Level4
   m_EditorClassIdentifier: 
-  NamePlayer1: Player1
+  NamePlayer1: Alice
   ScorePlayer1: 200
-  NamePlayer2: Player2
+  NamePlayer2: Chloe
   ScorePlayer2: 180
-  NamePlayer3: Player3
+  NamePlayer3: Pippi
   ScorePlayer3: 70
