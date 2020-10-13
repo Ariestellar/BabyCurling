@@ -844,7 +844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9154431681236839349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6686,10 +6686,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 5885308634566262601}
   _button: {fileID: 8920500157433677346}
-  _imageDefeat: {fileID: 21300000, guid: 82220d55ef0b1e441a712276d5da687e, type: 3}
-  _buttonImageDefeat: {fileID: 21300000, guid: 204de8f7bb476044fa96d66eee4653c9, type: 3}
-  _imageVictory: {fileID: 21300000, guid: 1132e600d16a0d744814990ef077fe63, type: 3}
-  _buttonimageVictory: {fileID: 21300000, guid: cd2c5f2cdd6adff4591e1b9dee24556f,
+  _textResult: {fileID: 4714669437679102424}
+  _buttonImageDefeat: {fileID: 21300000, guid: 5209f58a0adce7c46a78045a34931412, type: 3}
+  _buttonimageVictory: {fileID: 21300000, guid: 031be135ec9aaf94c8ff7077a7a70249,
     type: 3}
   _totalScore: {fileID: 7630543062587903222}
   _partyPane: {fileID: 2051223170284386772}

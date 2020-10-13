@@ -8,9 +8,11 @@ public class ResultPanel : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private Image _button;
-    [SerializeField] private Sprite _imageDefeat;
+    [SerializeField] private Text _textResult;
+
+    //[SerializeField] private Sprite _imageDefeat;
     [SerializeField] private Sprite _buttonImageDefeat;
-    [SerializeField] private Sprite _imageVictory;
+    //[SerializeField] private Sprite _imageVictory;
     [SerializeField] private Sprite _buttonimageVictory;
     [SerializeField] private Text _totalScore;
     [SerializeField] private PartyPanelResultPanel _partyPane;
@@ -22,13 +24,15 @@ public class ResultPanel : MonoBehaviour
         {
             if (stateGame == StateGame.Victory)
             {
-                _image.sprite = _imageVictory;
+                //_image.sprite = _imageVictory;
+                _textResult.text = "VICTORY";
                 _button.sprite = _buttonimageVictory;
                 _totalScore.text = "TOTAL SCORE: " + totalScore;
             }
             else if (stateGame == StateGame.Defeat)
             {
-                _image.sprite = _imageDefeat;
+                //_image.sprite = _imageDefeat;
+                _textResult.text = "LOW SCORE";
                 _button.sprite = _buttonImageDefeat;
                 _totalScore.text = "TOTAL SCORE: " + totalScore;
             }

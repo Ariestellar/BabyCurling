@@ -38,7 +38,8 @@ public class GameSessionCurrentLevel: MonoBehaviour
     private void Start()
     {
         _uiPanel.SetTextLevel(SceneManager.GetActiveScene().buildIndex);
-        _touchHandler.startLevel += StartCurrentLevel;
+        _touchHandler.startLevel += _uiPanel.GetNameInputDialog().SetName;
+        _touchHandler.startLevel += StartCurrentLevel;        
         if (Screen.width <= 480)
         {
             _canvasScaler.scaleFactor = 1;

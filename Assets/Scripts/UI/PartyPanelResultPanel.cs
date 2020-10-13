@@ -17,7 +17,7 @@ public class PartyPanelResultPanel : MonoBehaviour
         for (int i = 0; i < _party.Length; i++)
         {
             _party[i].SetData(_actyalParty[i].GetNumberPoints(), _actyalParty[i].GetName());
-            _party[i].GetComponent<Image>().sprite = _actyalParty[i].GetComponent<Image>().sprite;
+            //_party[i].GetComponent<Image>().sprite = _actyalParty[i].GetComponent<Image>().sprite;
         }
 
     }

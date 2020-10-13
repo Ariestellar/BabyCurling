@@ -28,9 +28,10 @@ public class UIPanel : MonoBehaviour
         if (DataGame.isSetNamePlayer == false)
         {
             _nameInputDialog.gameObject.SetActive(true);
-            _touchHandler.gameObject.SetActive(false);//Останавливаем обработчик касаний при указании  имени запускаем
+            //_touchHandler.gameObject.SetActive(false);//Останавливаем обработчик касаний, при указании  имени запускаем
         }
     }
+
     public void SetCountScore(int totalScore)
     {
         _scorePanel.SetNumberPlayerPoints(totalScore);
@@ -38,6 +39,8 @@ public class UIPanel : MonoBehaviour
 
     public void ShowResultPanel(StateGame stateGame, int totalScore)
     {
+        _scorePanel.gameObject.SetActive(false);
+        _secondCameraTopImage.SetActive(false);
         _resultPanel.Show(stateGame, totalScore);
         _resultPanel.gameObject.SetActive(true);
     }
@@ -87,5 +90,10 @@ public class UIPanel : MonoBehaviour
     public DataPlayers GetDataPlayers()
     {
         return _scorePanel.GetDataPlayers();
+    }
+
+    public NameInputDialog GetNameInputDialog()
+    {
+        return _nameInputDialog;
     }
 }
