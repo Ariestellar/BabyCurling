@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 1011064592703511
   appLabels:
-  - App Name
+  - Baby Curling 3D
   cookie: 1
   logging: 1
   status: 1
